@@ -1,17 +1,17 @@
-# Fengbushi Server 102 Start Commands
+# Fengbushi Server 101 Start Commands
 
 ## First Time Setup (After System Restart)
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## Start Service
 cd C:\fengbushi
-.\start-backend.ps1 server102
+.\start-backend.ps1
 
 ## Stop Service
-.\stop-backend.ps1 server102
+.\stop-backend.ps1
 
 ## Check Status
-.\check-backend.ps1 server102
+.\check-backend.ps1
 
 ## View Logs
-Get-Content C:\fengbushi\logs\fengbushi-server102.log -Tail 50
+Get-Content C:\fengbushi\logs\fengbushi-server.log -Tail 50

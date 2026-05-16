@@ -5,15 +5,12 @@
 ```
 fengbushi/
 ├── deploy/                  # 部署脚本和配置
-│   ├── application-server101.properties  # Server 101 配置
-│   ├── application-server102.properties  # Server 102 配置
 │   ├── start-backend.ps1     # 后端启动脚本
 │   ├── stop-backend.ps1      # 后端停止脚本
 │   ├── check-backend.ps1     # 状态检查脚本
 │   ├── consul-template.py    # Consul 自动配置脚本
 │   ├── START_COMMANDS.txt    # 启动命令文档
-│   ├── server101-commands.txt # Server 101 桌面命令
-│   └── server102-commands.txt # Server 102 桌面命令
+│   ├── server-commands.txt # Server 桌面命令
 ├── src/                     # 源代码
 ├── target/                  # 编译输出
 └── pom.xml                  # Maven 配置
@@ -52,8 +49,6 @@ java -jar target/fengbushi-0.0.1-SNAPSHOT.jar
 
 ## 配置文件
 
-- `application-server101.properties` - Server 101 配置
-- `application-server102.properties` - Server 102 配置
 - `application.properties` - 本地开发配置
 
 ## 核心功能

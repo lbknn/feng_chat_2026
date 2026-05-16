@@ -1,7 +1,5 @@
 # Fengbushi 后端启动命令
 
-## Server 101 (192.168.50.101)
-
 ### 首次配置（开机自启动后需执行一次）
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -10,47 +8,20 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### 启动服务
 ```powershell
 cd C:\fengbushi
-.\start-backend.ps1 server101
+.\start-backend.ps1
 ```
 
 ### 停止服务
 ```powershell
-.\stop-backend.ps1 server101
+.\stop-backend.ps1
 ```
 
 ### 检查状态
 ```powershell
-.\check-backend.ps1 server101
+.\check-backend.ps1
 ```
 
----
-
-## Server 102 (192.168.50.102)
-
-### 首次配置（开机自启动后需执行一次）
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-### 启动服务
-```powershell
-cd C:\fengbushi
-.\start-backend.ps1 server102
-```
-
-### 停止服务
-```powershell
-.\stop-backend.ps1 server102
-```
-
-### 检查状态
-```powershell
-.\check-backend.ps1 server102
-```
-
----
-
-## 负载均衡器 (192.168.50.100)
+## 负载均衡器
 
 ### 更新 Nginx 配置
 ```bash
@@ -84,40 +55,28 @@ mvn clean package -DskipTests
 
 ### 2. 上传 JAR 到服务器
 ```powershell
-scp target/fengbushi-0.0.1-SNAPSHOT.jar lbknn@192.168.50.101:C:/fengbushi/app.jar
-scp target/fengbushi-0.0.1-SNAPSHOT.jar lbknn@192.168.50.102:C:/fengbushi/app.jar
+scp target/fengbushi-0.0.1-SNAPSHOT.jar 服务器地址:C:/fengbushi/app.jar
 ```
 
 ### 3. 上传配置文件（如有修改）
 ```powershell
-scp deploy/application-server101.properties lbknn@192.168.50.101:C:/fengbushi/config/
-scp deploy/application-server102.properties lbknn@192.168.50.102:C:/fengbushi/config/
-scp deploy/start-backend.ps1 lbknn@192.168.50.101:C:/fengbushi/
-scp deploy/start-backend.ps1 lbknn@192.168.50.102:C:/fengbushi/
-scp deploy/stop-backend.ps1 lbknn@192.168.50.101:C:/fengbushi/
-scp deploy/stop-backend.ps1 lbknn@192.168.50.102:C:/fengbushi/
-scp deploy/check-backend.ps1 lbknn@192.168.50.101:C:/fengbushi/
-scp deploy/check-backend.ps1 lbknn@192.168.50.102:C:/fengbushi/
+scp deploy/application-server101.properties [虚拟机用户名@服务器地址]:C:/fengbushi/config/
+scp deploy/start-backend.ps1 [虚拟机用户名@服务器地址]:C:/fengbushi/
+scp deploy/stop-backend.ps1 [虚拟机用户名@服务器地址]:C:/fengbushi/
+scp deploy/check-backend.ps1 [虚拟机用户名@服务器地址]:C:/fengbushi/
 ```
 
 ### 4. 重启服务
 ```powershell
-# Server 101
-ssh lbknn@192.168.50.101
+ssh [虚拟机用户名@服务器地址]
 cd C:\fengbushi
 .\stop-backend.ps1 server101
 .\start-backend.ps1 server101
 
-# Server 102
-ssh lbknn@192.168.50.102
-cd C:\fengbushi
-.\stop-backend.ps1 server102
-.\start-backend.ps1 server102
-```
 
 ### 5. 更新负载均衡
 ```bash
-ssh lbknn@192.168.50.100
+ssh [虚拟机用户名@服务器地址]
 sudo python3 /opt/consul-template.py
 ```
 
