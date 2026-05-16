@@ -1,0 +1,42 @@
+# Fengbushi Server Configuration
+
+## Load Balancer
+- IP: 192.168.50.100
+- OS: Linux
+- User: lbknn
+- Services: Nginx (8080) + Consul (8500)
+
+## Backend Node 1
+- IP: 192.168.50.101
+- OS: Windows
+- User: lbknn
+- App: C:\fengbushi\app.jar
+- MongoDB: localhost:27017
+- MySQL: 192.168.50.1:3306
+
+## Backend Node 2
+- IP: 192.168.50.102
+- OS: Windows
+- User: lbknn
+- App: C:\fengbushi\app.jar
+- MongoDB: localhost:27017
+- MySQL: 192.168.50.1:3306
+
+## Database
+- MySQL: 192.168.50.1:3306
+- User: root
+- Password: gyq123
+- Database: fengbushi
+
+## Deployment
+- JAR: target/fengbushi-0.0.1-SNAPSHOT.jar
+- Deploy Path: C:\fengbushi\app.jar
+- Config Path: C:\fengbushi\config\
+- Scripts: C:\fengbushi\
+- Logs: C:\fengbushi\logs\
+
+## SSH Commands
+scp local_file lbknn@192.168.50.101:C:/fengbushi/
+scp local_file lbknn@192.168.50.102:C:/fengbushi/
+ssh lbknn@192.168.50.101
+ssh lbknn@192.168.50.102

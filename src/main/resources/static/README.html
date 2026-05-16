@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风不止聊天 - 使用说明</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        ul {
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4A90E2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #357ABD;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74,144,226,0.3);
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        .info-box {
+            background: #E6F7FF;
+            border-left: 4px solid #4A90E2;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background: #FFF7E6;
+            border-left: 4px solid #FAAD14;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💬 风不止聊天</h1>
+        <p class="subtitle">实时聊天应用 - 前端使用指南</p>
+        
+        <div class="info-box">
+            <strong>✅ 前端已就绪!</strong><br>
+            所有文件已创建在 <code>frontend/</code> 目录下
+        </div>
+        
+        <h2>📁 文件结构</h2>
+        <ul>
+            <li><code>index.html</code> - 主页面</li>
+            <li><code>css/style.css</code> - 样式文件(响应式设计)</li>
+            <li><code>js/api.js</code> - API接口封装</li>
+            <li><code>js/websocket.js</code> - WebSocket连接管理</li>
+            <li><code>js/app.js</code> - 应用主逻辑</li>
+        </ul>
+        
+        <h2>🚀 如何启动</h2>
+        
+        <h3>方式一:直接打开(简单测试)</h3>
+        <ol>
+            <li>确保后端服务已启动 (端口 8080)</li>
+            <li>双击 <code>frontend/index.html</code> 直接在浏览器打开</li>
+            <li>或使用Live Server插件(推荐)</li>
+        </ol>
+        
+        <h3>方式二:使用Python简易服务器</h3>
+        <pre style="background:#f0f0f0;padding:15px;border-radius:8px;overflow-x:auto;">
+# 在 frontend 目录下执行
+cd frontend
+python -m http.server 3000
+
+# 然后访问 http://localhost:3000</pre>
+        
+        <h3>方式三:使用Nginx(生产环境)</h3>
+        <pre style="background:#f0f0f0;padding:15px;border-radius:8px;overflow-x:auto;">
+# 将 frontend 目录放到 Nginx 的 html 目录
+# 配置 Nginx 指向该目录即可</pre>
+        
+        <h2>⚙️ 配置说明</h2>
+        
+        <div class="warning-box">
+            <strong>重要:</strong> 需要修改 API 地址<br>
+            编辑 <code>js/api.js</code> 第3行:
+            <br><code>const API_BASE_URL = 'http://localhost:8080';</code>
+            <br>改为你的后端服务器地址
+        </div>
+        
+        <h2>📱 功能特性</h2>
+        <ul>
+            <li>✅ 响应式设计 - 支持手机、平板、电脑</li>
+            <li>✅ 用户登录/注册</li>
+            <li>✅ <strong>添加好友</strong> - 点击侧边栏“➕ 添加好友”按钮</li>
+            <li>✅ 好友列表管理</li>
+            <li>✅ 群聊列表管理</li>
+            <li>✅ 实时消息收发 (WebSocket)</li>
+            <li>✅ 自动重连机制</li>
+            <li>✅ 消息历史记录</li>
+            <li>✅ 搜索功能</li>
+            <li>✅ 移动端侧边栏</li>
+        </ul>
+        
+        <h2>🎨 界面预览</h2>
+        <ul>
+            <li><strong>登录页:</strong> 渐变背景,简洁表单</li>
+            <li><strong>聊天页:</strong> 左侧联系人列表,右侧聊天窗口</li>
+            <li><strong>移动端:</strong> 汉堡菜单切换侧边栏</li>
+            <li><strong>消息气泡:</strong> 绿色(自己),白色(对方)</li>
+        </ul>
+        
+        <h2>🔧 技术栈</h2>
+        <ul>
+            <li>原生 HTML5 + CSS3 + JavaScript</li>
+            <li>Flexbox 响应式布局</li>
+            <li>CSS Grid (部分区域)</li>
+            <li>WebSocket 实时通信</li>
+            <li>Fetch API 网络请求</li>
+            <li>LocalStorage 本地存储</li>
+        </ul>
+        
+        <h2>📝 使用指南</h2>
+        
+        <h3>1. 注册账号</h3>
+        <ol>
+            <li>打开应用，点击“立即注册”</li>
+            <li>填写用户名、昵称（可选）、密码</li>
+            <li>点击注册按钮</li>
+            <li><strong>记住你的用户ID</strong>（注册成功后会显示）</li>
+        </ol>
+        
+        <h3>2. 添加好友</h3>
+        <ol>
+            <li>登录后，在左侧边栏找到“➕ 添加好友”按钮</li>
+            <li>点击按钮，弹出添加好友窗口</li>
+            <li>输入对方的<strong>用户ID</strong></li>
+            <li>可以填写备注名称（可选）</li>
+            <li>点击“确认添加”</li>
+            <li>添加成功后，好友会出现在好友列表中</li>
+        </ol>
+        
+        <div class="info-box">
+            <strong>💡 提示：</strong>如何获取对方ID？<br>
+            可以让对方登录后查看个人信息，或者通过后端API查询用户列表。
+        </div>
+        
+        <h3>3. 开始聊天</h3>
+        <ol>
+            <li>在好友列表中点击好友头像或名称</li>
+            <li>右侧会打开聊天窗口</li>
+            <li>在底部输入框输入消息</li>
+            <li>按 Enter 键或点击“发送”按钮发送</li>
+            <li>Shift + Enter 可以换行</li>
+        </ol>
+        
+        <h2>📝 测试账号</h2>
+        <div class="info-box">
+            使用数据库初始化时创建的测试账号:
+            <ul style="margin-top:10px;">
+                <li>用户名: <code>test1</code> / 密码: <code>123456</code></li>
+                <li>用户名: <code>test2</code> / 密码: <code>123456</code></li>
+                <li>用户名: <code>test3</code> / 密码: <code>123456</code></li>
+            </ul>
+            <p style="margin-top:10px;"><strong>注意：</strong>首次使用前需要先注册用户，或使用测试账号登录。</p>
+        </div>
+        
+        <h2>🐛 常见问题</h2>
+        
+        <h3>1. 跨域问题 (CORS)</h3>
+        <p>如果看到跨域错误,请确保后端的 <code>CorsConfig.java</code> 已正确配置。</p>
+        
+        <h3>2. WebSocket连接失败</h3>
+        <p>检查后端WebSocket端点是否正确,默认路径: <code>/ws/chat/{userId}</code></p>
+        
+        <h3>3. 消息发送失败</h3>
+        <p>确认后端API接口是否正常运行,查看浏览器控制台错误信息</p>
+        
+        <h2>🎯 下一步优化建议</h2>
+        <ul>
+            <li>添加图片/文件上传功能</li>
+            <li>实现表情包选择器</li>
+            <li>添加语音消息支持</li>
+            <li>实现消息已读回执</li>
+            <li>添加深色模式</li>
+            <li>集成PWA(离线可用)</li>
+        </ul>
+        
+        <a href="index.html" class="btn">🚀 立即体验</a>
+    </div>
+</body>
+</html>
